@@ -3,9 +3,9 @@
 using namespace std;
 
 
-long double fi(int n)
+int fi(int n)
 {
-	long double m=1;
+	int m=1;
 	int rec =1;
 	bool primo;
 	for(int i = n;i > 1;i--)
@@ -18,19 +18,16 @@ long double fi(int n)
 				primo = false;
 			}
 		}
-		// valor de m
-		if(primo==true)
-		{
-			m = m*i;
-		}
-		// (p1-1)(p2-1)…(pk-1)
 		if(primo==true && n % i == 0)
 		{
+			// valor de m
+			m = m*i;
+			// (p1-1)(p2-1)…(pk-1)
 			rec=rec*(i-1);
 		}
 	}
 	// fi(n)=n/m(p1-1)(p2-1)...(pk-1)
-	long double x = n/m * (rec);
+	int x = n/m * (rec);
 	return x;
 } 
 
@@ -40,8 +37,7 @@ int main()
 	
 	cout << "insira o valor de n :" << endl;
 	cin >> n;
-	long double x = fi(n);
+	int x = fi(n);
 	
 	cout << "Resultado :"<< x << endl;
 }
-
