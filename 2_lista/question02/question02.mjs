@@ -27,7 +27,7 @@ function solveQuadraticEquation(a, b, c) {
     return `Solução para delta = 0: Xn = C1*${x1}^n + C2*n*${x2}^n`;
   } else {
     const solution = quadraticRoot(a, b, c);
-    return `Solução para delta < 0: Xn = C1* ${solution.x1}^n + C2* ${solution.x2}^n`;
+    return `Solução para delta < 0: Xn = C1*(${solution.x1})^n + C2*(${solution.x2})^n`;
   }
 }
 
