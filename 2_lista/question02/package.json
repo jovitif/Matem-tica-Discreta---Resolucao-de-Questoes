@@ -1,0 +1,16 @@
+{
+  "name": "question02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "question02.mjs",
+  "scripts": {
+    "test": "node question02.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "complex.js": "^2.1.1",
+    "readline-sync": "^1.4.10"
+  }
+}
