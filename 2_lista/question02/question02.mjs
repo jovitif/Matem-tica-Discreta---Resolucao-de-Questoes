@@ -1,9 +1,9 @@
 import Complex from 'complex.js';
 import { question } from 'readline-sync';
 
-const tmp_a = question("Digite o valor do coeficiente correspondente ao A: ");
-const tmp_b = question("Digite o valor do coeficiente correspondente ao B: ");
-const tmp_c = question("Digite o valor do coeficiente correspondente ao B: ");
+const tmp_a = question("Digite o valor do coeficiente correspondente ao r da equação característica: ");
+const tmp_b = question("Digite o valor do coeficiente correspondente ao pr da equação característica: ");
+const tmp_c = question("Digite o valor do coeficiente correspondente ao q da equação característica: ");
 
 const a = tmp_a / tmp_a;
 const b = tmp_b / tmp_a;
