@@ -45,6 +45,11 @@ class Grafo(object):
         if not self.direcionado:
             self.adj[v].add(u)
 
+    def ehDirecionado(self):
+        for e in self.get_arestas():
+          for l in self.get_arestas():
+            if e[0] == l[1] and e[1] == l[0]:
+              return True
  
     def adiciona_peso_em_aresta(self, v, a, p):
         self.adj[v][a]['peso'] = p
@@ -152,3 +157,7 @@ grafo.existe_aresta(10, 2)
 
 #F)
 nx.draw(graf, with_labels=True, node_size=1200, node_color='red',edge_color="tab:blue")
+
+
+#H)
+grafo.ehDirecionado()
