@@ -100,8 +100,8 @@ def getAresta(u,v):
     print("pontos[",u,",",v,"]:",G.has_edge(u,v))
 
 
-for j in range(1,10):
- for i in range(1,10):
+for j in range(1,11):
+ for i in range(1,11):
   getAresta(i,j)
 
 
@@ -112,12 +112,23 @@ mostrar_grafo()
 
 print()
 
+def eDirecionado(g):
+  if nx.is_directed(G):
+    print("O seu grafo é direcionado!")
+  else:
+    print("O seu grafo não é direcionado!")
+
+
+eDirecionado(G)
+
+print()
+
 print("Imprimir pesos:")
 
 def getWeight(u,v):
     if(G.has_edge(u,v)):
         print("pontos[",u,",",v,"]:",G.get_edge_data(u,v))
 
-for j in range(1,10):
- for i in range(1,10):
+for j in range(1,11):
+ for i in range(1,11):
   getWeight(i,j) 
