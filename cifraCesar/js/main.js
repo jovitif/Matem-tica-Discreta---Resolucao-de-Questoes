@@ -23,9 +23,9 @@ const TABLECHARACTER = {
 // array que vai ficar com as informações 
 let numbersValidsToEncrypt = []
 
-const encrypt = (event) => {
+const encrypt = () => {
   if (!inputAHTML.value || !inputBHTML.value || !inputHTML.value) return
-  
+
   // valor vindo do input principal
   // transformando em array com cada letra
   // Ex.: ['P', 'O', 'O']
@@ -39,7 +39,7 @@ const encrypt = (event) => {
     // verifica se está entre o range dos caracteres
     if (number > 1 && number < 29) {
       // salva, o char, o numero que está com char 
-      numbersValidsToEncrypt.push({ char: item, number: Number(TABLECHARACTER.positive[item]) })
+      numbersValidsToEncrypt.push({ char: item, number: Number(TABLECHARACTER.positive[item]), oldNumber: number })
     } else {
       // cálculo um número que esteja entre o range de 1 e 29 (tamanho da tabela)
       const newNumber = findK(number) 
@@ -82,12 +82,32 @@ const encrypt = (event) => {
   resultHTML.innerHTML = `<p>Sua mensagem criptografada: <strong>${wordEncrypt}</strong></p>`
 }
 
-const decrypt = (event) => {
+const decrypt = () => {
   if (!inputAHTML.value || !inputBHTML.value || !inputHTML.value) return
-
 
   let wordEncrypt = ''
   
+
+  let inverseArray = []
+  numbersValidsToEncrypt.forEach((item) => {
+    inverseArray.push(inverseFunction(inputAHTML.value, inputBHTML.value, item.oldNumber))     
+  })
+
+  inverseArray.forEach((item) => {
+    if (Number(item) > 0) {
+      Object.values(TABLECHARACTER.positive).forEach((tableNumber, index) => {
+        if (Number(tableNumber) === Number(item))  {
+          wordEncrypt += Object.keys(TABLECHARACTER.positive)[index];
+        }
+      })
+    } else {
+      Object.values(TABLECHARACTER.negative).forEach((tableNumber, index) => {
+        if (Number(tableNumber) === Number(item))  {
+          wordEncrypt += Object.keys(TABLECHARACTER.negative)[index];
+        }
+      })
+    }
+  })
 
   resultHTML.innerHTML = `<p>Sua mensagem criptografada: <strong>${wordEncrypt}</strong></p>`
 } 
@@ -108,4 +128,10 @@ const findK = (number) => {
 }
 
 // seria a função da inversa
-const inverseFunction = (a, b, x) => (Number(x) - Number(b)) / Number(a)
+const inverseFunction = (a, b, x) => {
+  if (x > 0) {
+    return (Number(x) - Number(b)) / Number(a)
+  } else {
+    return (Number(x) + Number(b)) / Number(a)
+  }
+}
